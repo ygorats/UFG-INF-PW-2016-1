@@ -85,3 +85,5 @@
 0:0:0:0:0:0:0:1 - - [03/May/2016:21:39:57 -0300] "GET /favicon.ico HTTP/1.1" 404 - http-bio-9091-exec-3 0
 0:0:0:0:0:0:0:1 - - [03/May/2016:21:40:06 -0300] "GET /ProgrWeb/imc.jsp HTTP/1.1" 200 256 http-bio-9091-exec-4 637
 0:0:0:0:0:0:0:1 - - [03/May/2016:21:40:21 -0300] "GET /ProgrWeb/imc.jsp?peso=90&altura=1.8 HTTP/1.1" 200 271 http-bio-9091-exec-5 3
+0:0:0:0:0:0:0:1 - - [03/May/2016:21:44:03 -0300] "GET /ProgrWeb/imc.jsp?peso=80&altura=1.7 HTTP/1.1" 200 270 http-bio-9091-exec-7 2
+0:0:0:0:0:0:0:1 - - [03/May/2016:21:49:18 -0300] "GET /ProgrWeb/imc.jsp?peso=80&altura=1.7 HTTP/1.1" 200 258 http-bio-9091-exec-9 111
