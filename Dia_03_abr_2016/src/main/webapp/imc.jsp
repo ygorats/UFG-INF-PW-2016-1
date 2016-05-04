@@ -25,7 +25,7 @@
 		double imc = Double.parseDouble(pesoStr) / (Math.pow(Double.parseDouble(alturaStr), 2));
 	%>
 
-</form>
+</form> 
 
 <h3><b>Seu IMC é de <%out.print(imc);%></b></h3>
 
