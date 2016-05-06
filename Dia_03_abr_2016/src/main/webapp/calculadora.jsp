@@ -8,41 +8,50 @@
 
 </head>
 
+<body>
+
 <h1>Calculadora</h1>
-<br><br>
+
+<i>Foram inclusas algumas coisas, como: 
+	<br>-> radio buttons
+	<br>-> hints nos campos
+	<br>-> atalho para seleção da operação (veja os hints)
+</i>
+<br><br><br>
 
 <form>
 
-Operador 1: <input name="operador1">
+Operador 1: <input name="operador1" title="Forneça o valor do primeiro operador"
+ 			   tabindex="1">
 <br><br>
 
-Operando  : <input name="operando">
-<br>
+Operação: 
+<input type="radio" name="operacao"                 value="+" 
+  accesskey="+"    title="Pressione Alt+ ''+'' " tabindex="2" checked >Soma 
 
+<input type="radio" name="operacao"                 value="-" 
+  accesskey="-"    title="Pressione Alt+ ''-'' " tabindex="2">Subtração 
 
-<input type="radio" name="operacao" id='+' checked/>Soma 
+<input type="radio" name="operacao"                 value="/" 
+  accesskey="/"    title="Pressione Alt+ ''/'' " tabindex="2">Divisão 
 
-<input type="radio" name="operacao" id='-' >Subtração 
-
-<input type="radio" name="operacao" id='/' >Divisão 
-
-<input type="radio" name="operacao" id='*' >Multiplicação 
-
+<input type="radio" name="operacao" value="*" 
+  accesskey="*"    title="Pressione Alt+ ''*'' " tabindex="2">Multiplicação 
 
 <br><br>
-Operador 2: <input name="operador2">
-<br><br>
-<br>
-<button>Calcular</button>
+Operador 2: <input name="operador2" title="Forneça o valor do segundo operador"
+               tabindex="3">
+<br><br><br>
 
-<%!
+<button title="Calcule essa bagaça" tabindex="4">Calcular</button>
+
+<%! //Scriptlet Especial
 public String ObtemValor(String parametro, String padrao){
 	
 	if((parametro == null) || (parametro == "")) return padrao;
 	
 	return parametro;
-}
-	
+}	
 	%>
 
 
@@ -53,20 +62,16 @@ public String ObtemValor(String parametro, String padrao){
 	
 	int op1 = Integer.parseInt(ObtemValor(request.getParameter("operador1"), "0"));
 
-	String operacao = ObtemValor(request.getParameter("operando"), "+");
+	String operacao = ObtemValor(request.getParameter("operacao"), "+");
 	
 	int resultado = Calculadora.Calcular(op1, op2, operacao);
 
 %>
 
-
 </form>
 
 <h2><b>Resultado: <%out.print(resultado); %></b></h2>
 
-
-
-<body>
 
 
 </body>
