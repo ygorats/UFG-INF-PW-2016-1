@@ -1,4 +1,5 @@
-
+<!DOCTYPE html>
+<%@page import="servletjsp.Calculadora" %>
 <html>
 
 <head>
@@ -6,51 +7,62 @@
 <title>Calculadora</title>
 
 </head>
-<br><br>
+
 <h1>Calculadora</h1>
-<br><br><br><br>
+<br><br>
 
 <form>
 
 Operador 1: <input name="operador1">
 <br><br>
+
 Operando  : <input name="operando">
+<br>
+
+
+<input type="radio" name="operacao" id='+' checked/>Soma 
+
+<input type="radio" name="operacao" id='-' >Subtração 
+
+<input type="radio" name="operacao" id='/' >Divisão 
+
+<input type="radio" name="operacao" id='*' >Multiplicação 
+
+
 <br><br>
 Operador 2: <input name="operador2">
 <br><br>
 <br>
 <button>Calcular</button>
 
+<%!
+public String ObtemValor(String parametro, String padrao){
+	
+	if((parametro == null) || (parametro == "")) return padrao;
+	
+	return parametro;
+}
+	
+	%>
+
+
 <%
 	//Scriptlet
-	String op1Str = request.getParameter("operador1");
-	String operacao = request.getParameter("operando");	
-	String op2Str = request.getParameter("operador2");
+		
+	int op2 =  Integer.parseInt(ObtemValor(request.getParameter("operador2"), "0"));
 	
+	int op1 = Integer.parseInt(ObtemValor(request.getParameter("operador1"), "0"));
+
+	String operacao = ObtemValor(request.getParameter("operando"), "+");
 	
-	if((op1Str == null) || (op1Str == "")) op1Str = "0";
-	if((op2Str == null) || (op2Str == "")) op2Str = "0";
-	if(operacao == null) operacao = "";
-	
-	int op2 =  Integer.parseInt(op2Str);
-	int op1 = Integer.parseInt(op1Str);
-	
-	int resultado = 0;
-	
-	if(operacao.equals("+")){ resultado = op1 + op2;}
-	if(operacao.equals("-")) resultado = op1 - op2;
-	if(operacao.equals("*")) resultado = op1 * op2;
-	if(operacao.equals("/")) resultado = op1 / op2;
+	int resultado = Calculadora.Calcular(op1, op2, operacao);
+
 %>
 
 
 </form>
 
-<h1><b>Resultado: <%out.print(resultado); %></b></h1>
-
-
-
-
+<h2><b>Resultado: <%out.print(resultado); %></b></h2>
 
 
 
@@ -58,9 +70,6 @@ Operador 2: <input name="operador2">
 
 
 </body>
-
-
-
 
 
 
