@@ -1,7 +1,6 @@
 package mvc;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,9 +21,11 @@ public class ImcController extends HttpServlet{
 		double resultado = ImcModel.Calcular(peso,
 						  					 altura);
 				
-		req.setAttribute("resultado", req.getParameter("peso"));
+		req.setAttribute("resultado", resultado);
 		
 		req.getRequestDispatcher("ImcView.jsp").forward(req, resp);
+		
+	
 		
 	}
 	
@@ -34,5 +35,14 @@ public class ImcController extends HttpServlet{
 		if((parametro == null) || (parametro == "0")) return padrao;
 		
 		return Double.parseDouble(parametro);
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	}
 }
