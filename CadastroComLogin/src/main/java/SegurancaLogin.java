@@ -11,29 +11,44 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 @WebFilter("/*")
 public class SegurancaLogin implements Filter{
 	 
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws ServletException, IOException {
-		//Obtém referências ao request e ao response.
+		//  ao request e ao response.
+		
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
+		
+		String requisicao = request.getRequestURI();
 
-		//Obtém a sessão corrente. Caso não exista, retorna "null".
+		
+		
+		// a  corrente. Caso  exista, retorna "null".
 		HttpSession session = request.getSession(false);
-		//Endereço de login.
+		// de login.
 		String loginUri = request.getContextPath() + "/login";
-
+		
 		
 		boolean loggedIn = session != null && session.getAttribute("usuario") != null;
 
 		boolean loginRequest = request.getRequestURI().equals(loginUri);
+		
+		
+		boolean dbclient = request.getRequestURI().equals("/CadastroComLogin/dbclient");
+		
 
-		//Se estiver logado ou se for a página de login.
-		if (loggedIn || loginRequest) {
+		/*if (requisicao.equals("/CadastroComLogin/dbclient")){
+			String dbReq = request.getContextPath() + "/dbclient";
+			response.sendRedirect(dbReq);
+		}*/
+		
+		//Se estiver logado ou se for a a de login.
+		if (loggedIn || loginRequest || dbclient) {
 			//Segue adiante.
-			chain.doFilter(request, response);
+			chain.doFilter(request, response);			
 		} else {
 			//Redireciona para o login.
 			response.sendRedirect(loginUri);

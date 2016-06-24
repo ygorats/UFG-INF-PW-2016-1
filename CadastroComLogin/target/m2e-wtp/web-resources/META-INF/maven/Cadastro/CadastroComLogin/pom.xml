@@ -7,6 +7,12 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>CadastroComLogin Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  <properties>
+  	<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
   <dependencies>
   	<dependency>
       <groupId>javax.servlet</groupId>
@@ -35,7 +41,7 @@
         <artifactId>tomcat7-maven-plugin</artifactId>
         <version>2.2</version>
         <configuration>
-          <port>9090</port>
+          <port>9092</port>
         </configuration>
       </plugin>
       <plugin>
